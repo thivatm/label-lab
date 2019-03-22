@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.canvasBox = this.canvas.nativeElement.getContext('2d');
-    this.imgObj = new Image();   
+    this.imgObj = new Image(); 
   }
 
   drawImg(image){
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
       this.imgObj.src = this.imagePath;
       this.imgObj.onload =  () => {  
         this.drawImg(this.imgObj);
-      };
+      }; 
     }
   }
   
@@ -97,6 +97,12 @@ export class HomeComponent implements OnInit {
         this.popupToasts(`Sorry! An error occurred: ${error}`);
       }
       );
+  }
+
+  clearAll() {
+    this.imgLabel = 'Not set!';
+    this.canvasBox.clearRect(0, 0, 1000, 1000);
+    this.drawImg(this.imgObj);
   }
 
   //Toast message
@@ -121,4 +127,6 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+
 }

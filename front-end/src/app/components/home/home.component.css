@@ -25,7 +25,6 @@
     margin: 5% auto;
     padding: 10px 0;
     width: 70%;
-    border: 0;
     font-family: 'Roboto-Mono', sans-serif;
     font-weight: 600;
     font-size: 2em;
@@ -42,16 +41,19 @@
     text-transform: capitalize;
     color: aliceblue;
     background-color: rgb(201, 0, 27);
+    border: 3px solid rgb(201, 0, 27);
+    border-radius: 0;
 }
 
 .browse {
     background-color: transparent;
-    border: 2px solid #000;
-    color: rgb(76, 0, 148);
+    border: 5px solid rgb(29, 0, 56);
+    color: rgb(29, 0, 56);
 }
 
 .upload {
-    background-color: rgb(223, 0, 0);
+    border: 5px solid rgb(91, 0, 151);
+    background-color: rgb(91, 0, 151);
     color: aliceblue;
 }
 
@@ -67,8 +69,7 @@
 
 .imageLabel {
     background-color: rgb(248, 248, 248);
-    border-radius: 5px;
-    border: 0;
+    border: 3px solid rgb(25, 0, 48);
     box-shadow: 2px 5px 5px 2px rgba(20, 20, 20, 0.11);
     font-family: 'Lekton', monospace;
     font-size: 2rem;
