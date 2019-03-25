@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits:{fileSize: 1000000},
+    limits:{fileSize: 100000000},
     fileFilter: function(req, file, cb){
       checkFileType(file, cb);
     }
@@ -46,7 +46,7 @@ router.route('/upload').post((req, res) => {
         console.log(error);
         return res.json({error: 'Oops something went wrong!'});
       }
-      return res.json({imgName: req.file.path});
+      return res.json({success: 'Upload Success!'});
     });
 });
 

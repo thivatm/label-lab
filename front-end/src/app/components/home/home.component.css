@@ -33,28 +33,41 @@
 
 .clear-btn {
     width: 100%;
-    padding: 3% 0;
-    font-family: 'Lekton', monospace;
-    font-size: 25px;
-    font-weight: 700;
+    padding: 4% 0;
+    font-family: 'Cabin', monospace;
+    font-size: 20px;
+    font-weight: 500;
     color: rgb(245, 245, 245);
-    text-transform: capitalize;
+    text-transform: uppercase;
     color: aliceblue;
     background-color: rgb(201, 0, 27);
-    border: 3px solid rgb(201, 0, 27);
     border-radius: 0;
 }
 
 .browse {
     background-color: transparent;
-    border: 5px solid rgb(29, 0, 56);
+    border: 3px solid rgba(29, 0, 97);
     color: rgb(29, 0, 56);
 }
 
+.browse:hover {
+    background-color: rgb(58, 0, 97);
+    border: 3px solid rgb(58, 0, 97);
+    transition: all 0.2s ease-in-out;
+    color: rgb(233, 233, 233);
+}
+
 .upload {
-    border: 5px solid rgb(91, 0, 151);
-    background-color: rgb(91, 0, 151);
-    color: aliceblue;
+    border: 5px solid rgb(0, 145, 0);
+    background-color: rgb(0, 145, 0);
+    color: rgb(233, 233, 233);
+}
+
+.upload:hover {
+    border: 5px solid rgb(62, 156, 62);
+    background-color: rgb(62, 156, 62);
+    color: rgb(233, 233, 233);
+    transition: all 0.2s ease-in-out;
 }
 
 .imageViewer {
@@ -68,14 +81,12 @@
 }
 
 .imageLabel {
-    background-color: rgb(248, 248, 248);
-    border: 3px solid rgb(25, 0, 48);
-    box-shadow: 2px 5px 5px 2px rgba(20, 20, 20, 0.11);
+    border: 1px solid rgb(180, 180, 180);
     font-family: 'Lekton', monospace;
-    font-size: 2rem;
+    font-size: 25px;
     font-weight: 700;
     color: rgba(51, 51, 51, 0.904);
     text-transform: capitalize;
-    margin: auto;
+    padding: 1%;
     display: block;
 }

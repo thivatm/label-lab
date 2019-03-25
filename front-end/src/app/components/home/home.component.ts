@@ -1,15 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LabService } from '../../services/label.service';
-import { Router } from '@angular/router';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { ModalLabelComponent } from '../modals/modal-label/modal-label.component';
-
-interface IRect {
-  startX? : number;
-  startY? : number;
-  w? : number;
-  h? : number;
-}
+import { IRect } from '../../models/IRect';
 
 @Component({
   selector: 'app-home',
@@ -20,16 +13,16 @@ export class HomeComponent implements OnInit {
 
   image: any;
   imagePath: any;
+
   @ViewChild('canvasView') canvas: ElementRef;
   canvasBox: CanvasRenderingContext2D;
 
   rectangle: IRect = {};
   isDragged = false;
   imgObj = null;
-  imgLabel: string = 'Label Me';
+  imgLabel: string = 'Label is not set';
 
-  constructor(private labService: LabService, private router: Router, private snackBar: MatSnackBar, 
-              public dialog: MatDialog) { }
+  constructor(private labService: LabService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.canvasBox = this.canvas.nativeElement.getContext('2d');
@@ -90,11 +83,15 @@ export class HomeComponent implements OnInit {
     formData.append('myImg', this.image, this.image.name);
     return this.labService.uploadImg(formData)
       .subscribe((res) => {
-        console.log(res);
-        this.popupToasts('Successfully uploaded.')
+        console.log(res['error']);
+        if (res['error']){
+          this.popupToasts('Upload images only!');
+        } else {
+          this.popupToasts('Successfully uploaded.');
+        }
       },
       (error) => {
-        this.popupToasts(`Sorry! An error occurred: ${error}`);
+        this.popupToasts(`Sorry! An error occurred!`);
       }
       );
   }
@@ -108,7 +105,7 @@ export class HomeComponent implements OnInit {
   //Toast message
   popupToasts(message: string) {
     this.snackBar.open(message, '', {
-      duration: 2000,
+      duration: 4000,
     });
   }
 

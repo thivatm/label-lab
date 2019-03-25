@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite id="0" name="E:\Work\LabelLab\front-end\src\app\components\home\home.component.spec.ts" errors="0" package="E:\Work\LabelLab\front-end\src\app\components\home\home.component.spec.ts" hostname="localhost" tests="0" failures="0" time="0" timestamp="1970-01-01T00:00:00">
+    <properties>
+    </properties>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+  <testsuite id="1" name="E:\Work\LabelLab\front-end\src\app\components\modals\modal-label\modal-label.component.spec.ts" errors="0" package="E:\Work\LabelLab\front-end\src\app\components\modals\modal-label\modal-label.component.spec.ts" hostname="localhost" tests="0" failures="0" time="0" timestamp="1970-01-01T00:00:00">
+    <properties>
+    </properties>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+  <testsuite id="2" name="E:\Work\LabelLab\front-end\src\app\app.component.spec.ts" errors="0" package="E:\Work\LabelLab\front-end\src\app\app.component.spec.ts" hostname="localhost" tests="2" failures="2" time="15.72" timestamp="2019-03-23T17:37:11">
+    <properties>
+    </properties>
+    <testcase classname="AppComponent" name="should create the app" time="0">
+      <failure message="Error: Uncaught (in promise): Failed to load app.component.html
+    at resolvePromise (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:831:31)
+    at resolvePromise (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:788:17)
+    at E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:892:17
+    at ZoneDelegate.Object.&lt;anonymous&gt;.ZoneDelegate.invokeTask (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:423:31)
+    at AsyncTestZoneSpec.Object.&lt;anonymous&gt;.AsyncTestZoneSpec.onInvokeTask (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\async-test.js:90:25)
+    at ProxyZoneSpec.Object.&lt;anonymous&gt;.ProxyZoneSpec.onInvokeTask (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\proxy.js:157:39)
+    at ZoneDelegate.Object.&lt;anonymous&gt;.ZoneDelegate.invokeTask (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:422:60)
+    at Zone.Object.&lt;anonymous&gt;.Zone.runTask (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:195:47)
+    at drainMicroTaskQueue (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:601:35)
+    at ZoneTask.Object.&lt;anonymous&gt;.ZoneTask.invokeTask [as invoke] (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:502:21)
+    at invokeTask (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:1744:14)
+    at XMLHttpRequest.globalZoneAwareCallback (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:1770:17)
+    at innerInvokeEventListeners (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:315:27)
+    at invokeEventListeners (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:266:3)
+    at XMLHttpRequestEventTargetImpl._dispatch (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:212:11)
+    at fireAnEvent (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\helpers\events.js:17:36)
+    at requestErrorSteps (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\xhr-utils.js:127:3)
+    at Object.dispatchError (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\xhr-utils.js:57:3)
+    at Request.client.on.err (E:\Work\LabelLab\front-end\node_modules\jest-environment-jsdom-thirteen\node_modules\jsdom\lib\jsdom\living\xmlhttprequest.js:674:20)
+    at emitOne (events.js:121:20)
+    at Request.emit (events.js:211:7)
+    at Request.onRequestError (E:\Work\LabelLab\front-end\node_modules\request\request.js:881:8)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)" type="AssertionError">
+      </failure>
+      <failure message="Error: This test module uses the component AppComponent which is using a &quot;templateUrl&quot; or &quot;styleUrls&quot;, but they were never compiled. Please call &quot;TestBed.compileComponents&quot; before your test.
+    at TestBedViewEngine._initIfNeeded (E:\Work\packages\core\testing\src\test_bed.ts:395:17)
+    at TestBedViewEngine.createComponent (E:\Work\packages\core\testing\src\test_bed.ts:594:10)
+    at Function.TestBedViewEngine.createComponent (E:\Work\packages\core\testing\src\test_bed.ts:247:36)
+    at E:\Work\LabelLab\front-end\src\app\app.component.spec.ts:14:29
+    at ZoneDelegate.Object.&lt;anonymous&gt;.ZoneDelegate.invoke (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:391:26)
+    at ProxyZoneSpec.Object.&lt;anonymous&gt;.ProxyZoneSpec.onInvoke (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\proxy.js:129:39)
+    at ZoneDelegate.Object.&lt;anonymous&gt;.ZoneDelegate.invoke (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:390:52)
+    at Zone.Object.&lt;anonymous&gt;.Zone.run (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:150:43)
+    at Object.testBody.length (E:\Work\LabelLab\front-end\node_modules\jest-preset-angular\zone-patch\index.js:52:27)
+    at Object.asyncJestTest (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:102:37)
+    at resolve (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\queueRunner.js:43:12)
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\queueRunner.js:26:19)
+    at promise.then (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\queueRunner.js:73:41)
+    at &lt;anonymous&gt;
+    at process._tickCallback (internal/process/next_tick.js:188:7)" type="AssertionError">
+      </failure>
+    </testcase>
+    <testcase classname="AppComponent" name="should have as title &apos;Label Lab&apos;" time="0">
+      <failure message="Error: This test module uses the component AppComponent which is using a &quot;templateUrl&quot; or &quot;styleUrls&quot;, but they were never compiled. Please call &quot;TestBed.compileComponents&quot; before your test.
+    at TestBedViewEngine._initIfNeeded (E:\Work\packages\core\testing\src\test_bed.ts:395:17)
+    at TestBedViewEngine.createComponent (E:\Work\packages\core\testing\src\test_bed.ts:594:10)
+    at Function.TestBedViewEngine.createComponent (E:\Work\packages\core\testing\src\test_bed.ts:247:36)
+    at E:\Work\LabelLab\front-end\src\app\app.component.spec.ts:20:29
+    at ZoneDelegate.Object.&lt;anonymous&gt;.ZoneDelegate.invoke (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:391:26)
+    at ProxyZoneSpec.Object.&lt;anonymous&gt;.ProxyZoneSpec.onInvoke (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\proxy.js:129:39)
+    at ZoneDelegate.Object.&lt;anonymous&gt;.ZoneDelegate.invoke (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:390:52)
+    at Zone.Object.&lt;anonymous&gt;.Zone.run (E:\Work\LabelLab\front-end\node_modules\zone.js\dist\zone.js:150:43)
+    at Object.testBody.length (E:\Work\LabelLab\front-end\node_modules\jest-preset-angular\zone-patch\index.js:52:27)
+    at Object.asyncJestTest (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:102:37)
+    at resolve (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\queueRunner.js:43:12)
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\queueRunner.js:26:19)
+    at promise.then (E:\Work\LabelLab\front-end\node_modules\jest-jasmine2\build\queueRunner.js:73:41)
+    at &lt;anonymous&gt;" type="AssertionError">
+      </failure>
+    </testcase>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+</testsuites>

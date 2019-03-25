@@ -39,6 +39,6 @@ const routes: Routes = [
   ],
   providers: [LabService],
   bootstrap: [AppComponent],
-  entryComponents: [ModalLabelComponent]
+  entryComponents: [ ModalLabelComponent ]
 })
 export class AppModule { }
