@@ -3,6 +3,7 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const util = require('util');
 
 const storage = multer.diskStorage({
     destination: './public/uploads/',
@@ -11,15 +12,16 @@ const storage = multer.diskStorage({
     }
 });
 
+//Upload image
 const upload = multer({
     storage: storage,
-    limits:{fileSize: 100000000},
+    limits:{fileSize: 1000000000},
     fileFilter: function(req, file, cb){
       checkFileType(file, cb);
     }
 }).single('myImg');
 
-
+//Validate file type
 function checkFileType(file, cb){
     const filetypes = /png|jpeg|jpg/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -40,11 +42,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-router.route('/upload').post((req, res) => {
+router.route('/upload').post((req, res) => {  
     upload(req, res, (error) => {
       if (error) {
-        console.log(error);
-        return res.json({error: 'Oops something went wrong!'});
+        return res.json({error: `${error}`});
       }
       return res.json({success: 'Upload Success!'});
     });

@@ -11,12 +11,12 @@ import { IRect } from '../../models/IRect';
 })
 export class HomeComponent implements OnInit {
 
-  image: any;
-  imagePath: any;
-
   @ViewChild('canvasView') canvas: ElementRef;
   canvasBox: CanvasRenderingContext2D;
 
+  image: any;
+  imagePath: any;
+  
   rectangle: IRect = {};
   isDragged = false;
   imgObj = null;
@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit {
     this.canvasBox.drawImage(image, x, y, image.width * scaleImg, image.height * scaleImg);
   }
 
+  //#region - Mouse Events
   mouseDown(event) {
-    this.canvasBox.clearRect(0, 0, 1000, 1000);
-    this.drawImg(this.imgObj);
+    //this.canvasBox.clearRect(0, 0, 1000, 1000);
+    //this.drawImg(this.imgObj);
     this.rectangle.startX = (event.layerX - event.currentTarget.offsetLeft);
     this.rectangle.startY = (event.layerY - event.currentTarget.offsetTop);
     this.isDragged = true;
@@ -62,9 +63,9 @@ export class HomeComponent implements OnInit {
       this.canvasBox.strokeRect(this.rectangle.startX, this.rectangle.startY, this.rectangle.w, this.rectangle.h);
     }
   }
+  //#endregion
 
   onChange(event){
-    console.log(event);
     const fileReader = new FileReader();
     this.image = event.target.files[0];
     fileReader.readAsDataURL(this.image);
@@ -81,17 +82,19 @@ export class HomeComponent implements OnInit {
   uploadImg() {
     let formData = new FormData();
     formData.append('myImg', this.image, this.image.name);
+    formData.append('coordinates', JSON.stringify(this.rectangle));
+    formData.append('label', this.imgLabel);
+
     return this.labService.uploadImg(formData)
       .subscribe((res) => {
-        console.log(res['error']);
         if (res['error']){
-          this.popupToasts('Upload images only!');
+          this.popupToasts(`Error: ${res['error']}`);
         } else {
           this.popupToasts('Successfully uploaded.');
         }
       },
       (error) => {
-        this.popupToasts(`Sorry! An error occurred!`);
+        this.popupToasts('Oops! An error occurred!');
       }
       );
   }

@@ -15,4 +15,15 @@ describe('workspace-project App', () => {
       level: logging.Level.SEVERE,
     }));
   });
+
+  it('should have title of', () => {
+    page.navigateTo();
+    expect(page.getTitle()).toEqual('LABEL LAB');
+  });
+
+  it('should have the button', () => {
+    page.navigateTo();
+    expect(page.getAboutButton().isPresent()).toEqual(true);
+  })
+
 });
