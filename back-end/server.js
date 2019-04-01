@@ -42,7 +42,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-router.route('/upload').post((req, res) => {  
+router.route('/upload').post((req, res) => {
     upload(req, res, (error) => {
       if (error) {
         return res.json({error: `${error}`});

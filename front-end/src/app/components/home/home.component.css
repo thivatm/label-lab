@@ -1,92 +1,142 @@
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 23px;  /* Preferred icon size */
+    direction: ltr;
+    text-align: center;
+    margin: auto;
+    display: block;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .row {
     margin: 0;
 }
-.header, .btns {
-    margin: 5% 5%;
+
+.show-case {
+    background-color: #F2F3F4;
 }
 
-.title {
-    font-size: 4em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.title-desc {
-    margin: 0 0 20% 0;
-    font-family: 'Roboto Mono', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.btns input{
+.tooltip-main {
+    background-color: #ED73EF;  
+    border-radius: 15px;
+    color: #F2F3F4;
+    margin: auto;
     display: block;
-    text-decoration: none;
-    margin: 5% auto;
-    padding: 10px 0;
-    width: 70%;
-    font-family: 'Roboto-Mono', sans-serif;
-    font-weight: 600;
-    font-size: 2em;
-    text-transform: uppercase;
 }
 
-.clear-btn {
-    width: 100%;
-    padding: 4% 0;
-    font-family: 'Cabin', monospace;
-    font-size: 20px;
-    font-weight: 500;
-    color: rgb(245, 245, 245);
-    text-transform: uppercase;
-    color: aliceblue;
-    background-color: rgb(201, 0, 27);
-    border-radius: 0;
+.tooltip-main p {
+    background-color: #ED73EF;
+    color: #F2F3F4;
+    margin: 2px 12px;
 }
 
-.browse {
-    background-color: transparent;
-    border: 3px solid rgba(29, 0, 97);
-    color: rgb(29, 0, 56);
+.browse-button {
+    margin: auto;
+    padding: 12px 0 0 0;
 }
 
-.browse:hover {
-    background-color: rgb(58, 0, 97);
-    border: 3px solid rgb(58, 0, 97);
+.browse-button p {
+    font-size: 1em;
+    color: #727274;
+}
+
+.browse-button a {
+    font-size: 1em;
+    color: #0172FF;
+}
+
+.browse-button a:hover {
+    cursor: pointer;
     transition: all 0.2s ease-in-out;
-    color: rgb(233, 233, 233);
+    color: rgba(1, 115, 255, 0.5);
+}
+
+.label-list {
+    height: 680px;
+}
+
+.upload-container {
+    position: relative;
+    padding: 15px 0;
 }
 
 .upload {
-    border: 5px solid rgb(0, 145, 0);
-    background-color: rgb(0, 145, 0);
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+    background-color: #0172FF;
     color: rgb(233, 233, 233);
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .upload:hover {
-    border: 5px solid rgb(62, 156, 62);
-    background-color: rgb(62, 156, 62);
-    color: rgb(233, 233, 233);
+    background-color: transparent;
+    border: 2px solid #0172FF;
+    color: #16171A;
     transition: all 0.2s ease-in-out;
 }
 
+
 .imageViewer {
-    margin: auto;
+    margin: 3% 5% 1% 5%;
     display: block;
     background-color: rgb(11, 8, 26);
 }
 
-.label-cont {
-    padding: 2% 0;
+.annotation {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    margin: 2% 0;
 }
 
-.imageLabel {
-    border: 1px solid rgb(180, 180, 180);
-    font-family: 'Lekton', monospace;
-    font-size: 25px;
-    font-weight: 700;
-    color: rgba(51, 51, 51, 0.904);
-    text-transform: capitalize;
-    padding: 1%;
+.label-list {
+    width: 100%;
+}
+
+.label-cont {
+    border: 1px solid #F06738;
+    border-radius: 5px;
+    margin: 2%;
+    padding: 1% 2%;
+}
+
+.label-cont p {
+    color: #16171A;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 1% 2%;
     display: block;
+    width: 60%;
+    text-transform: capitalize;
+}
+
+.label-cont i {
+    color: #F06738;
+    font-size: 23px;
+}
+
+.tip-one {
+    color: #727274;
+    font-size: 16px;
+    text-align: center;
 }

@@ -1,36 +1,43 @@
 <div class="row row-cont">
-    <div class="col-md-5 main">
-        <div class="header">
-            <p class="title">Label Lab</p>
-            <p class="title-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                est
-                laborum.</p>
+    <div class="col-md-9 show-case">
+        <div class="imageViewer">
+            <canvas #canvasView width="1100" height="650" (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)"
+                (mousemove)="mouseMove($event)" (mouseleave)="mouseLeave()"></canvas>
         </div>
-
-        <div class="btns">
-            <form>
+        <div class="row">
+            <div class="row browse-button">
                 <input class="submit" type="file" name="imgFile" id="imgFile" style="display: none"
                     (change)="onChange($event)" #imgUpload />
-                <input class="browse" type="button" value="Browse" (click)="imgUpload.click()" />
-                <input class="upload" type="button" value="Upload" (click)="uploadImg()" />
-            </form>
+                <p *ngIf="imgObj != null">Wrong image?&nbsp;</p>
+                <p *ngIf="imgObj == null">Welcome to Label Lab !&nbsp;</p>
+                <a class="browse" (click)="imgUpload.click()">Select a new image</a>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngIf="isHovering && imgObj != null" class="tooltip-main">
+                <p>Click and drag to create an annotation</p>
+            </div>
         </div>
     </div>
-    <div class="col-md-7 show-case">
-        <div class="imageViewer">
-            <canvas #canvasView width="800" height="650" (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)"
-                (mousemove)="mouseMove($event)"></canvas>
+    <div class="col-md-3">
+        <div class="annot-title">
+            <p class="annotation">Annotations</p>
         </div>
-        <div class="row label-cont">
-            <input class="col-md-8 imageLabel" [ngModel]="imgLabel" readonly/>
-            <div class="col-md-4">
-                <button mat-flat-button class="clear-btn" (click)="clearAll()">Clear</button>
+        <div class=label-list>
+            <div class="row label-cont" *ngFor="let label of imgLabel">
+                <div class="col-md-10">
+                    <p class="label"> {{ label }} </p>
+                </div>
+                <div class="col-md-2">
+                    <i class="material-icons">remove_circle_outline</i>
+                </div>
             </div>
+            <div class="tip-one">
+                <p class="tooltip-one">Select an area in the image to add an <br>annotation</p>
+            </div>
+        </div>
+        <div class="upload-container">
+            <button class="upload" (click)="uploadImg()">Upload Image</button>
         </div>
     </div>
 </div>
