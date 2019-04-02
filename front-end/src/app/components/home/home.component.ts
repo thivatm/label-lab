@@ -3,7 +3,8 @@ import { LabService } from '../../services/label.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { ModalLabelComponent } from '../modals/modal-label/modal-label.component';
 import { IRect } from '../../models/IRect';
-
+import { ResizedEvent  } from 'angular-resize-event';
+ 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,40 +19,46 @@ export class HomeComponent implements OnInit {
   image: any;
   imagePath: any;
 
-  rectangle: IRect = {};
-  rectArray = [];
-  isDragged = false;
-  isHovering = false;
   imgObj = null;
   imgLabel = [];
 
+  rectangle: IRect = {};
+  coordinatesArray = [];
+  
+  isDragged = false;
+  isHovering = false;
+  
   constructor(private labService: LabService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.canvasBox = this.canvas.nativeElement.getContext('2d');
-    this.imgLabel.push('Testing');
+  }
+
+  // To make canvas responsive
+  resizeCanvas(event: ResizedEvent) {
+    this.canvas.nativeElement.width = event.newWidth;
   }
 
   drawImg(image) {
     let scaleImg = Math.min(this.canvas.nativeElement.width / image.width, this.canvas.nativeElement.height / image.height);
-    var x = (this.canvas.nativeElement.width / 2) - (image.width / 2) * scaleImg;
-    var y = (this.canvas.nativeElement.height / 2) - (image.height / 2) * scaleImg;
+    let x = (this.canvas.nativeElement.width / 2) - (image.width / 2) * scaleImg;
+    let y = (this.canvas.nativeElement.height / 2) - (image.height / 2) * scaleImg;
     this.canvasBox.clearRect(0, 0, 1000, 1000);
     this.canvasBox.drawImage(image, x, y, image.width * scaleImg, image.height * scaleImg);
   }
 
-  //#region - Mouse Events
+  // #region - Mouse Events
   mouseDown(event) {
     this.canvasBox.clearRect(0, 0, 2000, 2000);
     this.drawImg(this.imgObj);
-    this.rectangle.startX = (event.clientX - event.currentTarget.offsetLeft);
-    this.rectangle.startY = (event.clientY - event.currentTarget.offsetTop);
+    this.rectangle.startX = (event.offsetX - event.currentTarget.offsetLeft);
+    this.rectangle.startY = (event.offsetY - event.currentTarget.offsetTop);
     this.isDragged = true;
   }
 
   mouseUp() {
     this.isDragged = false;
-    this.rectArray.push(this.rectangle);
+    this.coordinatesArray.push(this.rectangle);
     if (this.imgObj != null) {
       this.openDialog();
     }
@@ -62,8 +69,8 @@ export class HomeComponent implements OnInit {
     if (this.isDragged) {
       this.canvasBox.clearRect(0, 0, 2000, 2000);
       this.drawImg(this.imgObj);
-      this.rectangle.w = ((event.clientX - event.currentTarget.offsetLeft) - this.rectangle.startX);
-      this.rectangle.h = ((event.clientY - event.currentTarget.offsetTop) - this.rectangle.startY);
+      this.rectangle.w = ((event.offsetX - event.currentTarget.offsetLeft) - this.rectangle.startX);
+      this.rectangle.h = ((event.offsetY - event.currentTarget.offsetTop) - this.rectangle.startY);
       this.canvasBox.strokeStyle = 'red';
       this.canvasBox.lineWidth = 5;
       this.canvasBox.strokeRect(this.rectangle.startX, this.rectangle.startY, this.rectangle.w, this.rectangle.h);
@@ -73,7 +80,7 @@ export class HomeComponent implements OnInit {
   mouseLeave() {
     this.isHovering = false;
   }
-  //#endregion
+  // #endregion
 
   onChange(event) {
     const fileReader = new FileReader();
@@ -87,13 +94,15 @@ export class HomeComponent implements OnInit {
       this.imgObj.onload = () => {
         this.drawImg(this.imgObj);
       };
-    }
+    };
   }
 
+  // Uploads image along with the coordinates and labels
   uploadImg() {
     let formData = new FormData();
+    // Sending image file along with the coordinates and labels in the image 
     formData.append('myImg', this.image, this.image.name);
-    formData.append('Coordinates', JSON.stringify(this.rectArray));
+    formData.append('Coordinates', JSON.stringify(this.coordinatesArray));
     formData.append('ImageLabels', JSON.stringify(this.imgLabel));
 
     return this.labService.uploadImg(formData)
@@ -110,24 +119,27 @@ export class HomeComponent implements OnInit {
       );
   }
 
+  //Clears everything
   clearAll() {
-    this.canvasBox.clearRect(0, 0, 1000, 1000);
+    this.canvasBox.clearRect(0, 0, 2000, 2000);
     this.imgObj = null;
     this.imgInput.nativeElement.value = '';
+    this.imgLabel = [];
   }
 
+  // Clears the current label
   clearLabel(element) {
     this.imgLabel.splice(this.imgLabel.indexOf(element), 1);
   }
 
-  //Toast message
+  // Toast message: Shows the result of actions
   popupToasts(message: string) {
     this.snackBar.open(message, '', {
       duration: 4000,
     });
   }
 
-  //label Modal
+  // label Modal: Prompt to add labels to image 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalLabelComponent, {
       disableClose: false,

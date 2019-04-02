@@ -8,12 +8,10 @@ import { LabService } from './services/label.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule, 
-        MatDialogModule, 
-        MatInputModule, 
-        MatButtonModule } from '@angular/material';
+import { MatSnackBarModule, MatDialogModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ModalLabelComponent } from './components/modals/modal-label/modal-label.component';
+import { AngularResizedEventModule } from 'angular-resize-event';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -35,6 +33,7 @@ const routes: Routes = [
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    AngularResizedEventModule,
     HttpClientModule
   ],
   providers: [LabService],

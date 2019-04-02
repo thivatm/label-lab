@@ -1,7 +1,7 @@
 <div class="row row-cont">
     <div class="col-md-9 show-case">
-        <div class="imageViewer">
-            <canvas #canvasView width="1100" height="650" (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)"
+        <div class="imageViewer" (resized)="resizeCanvas($event)">
+            <canvas #canvasView height="650" (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)"
                 (mousemove)="mouseMove($event)" (mouseleave)="mouseLeave()"></canvas>
         </div>
         <div class="row">
@@ -11,29 +11,32 @@
                 <p *ngIf="imgObj != null">Wrong image?&nbsp;</p>
                 <p *ngIf="imgObj == null">Welcome to Label Lab !&nbsp;</p>
                 <a class="browse" (click)="imgUpload.click()">Select a new image</a>
+                <span> &nbsp; / &nbsp; </span>
+                <a class="browse" (click)="clearAll()">Clear image</a>
             </div>
         </div>
         <div class="row">
             <div *ngIf="isHovering && imgObj != null" class="tooltip-main">
                 <p>Click and drag to create an annotation</p>
             </div>
+            <div *ngIf="isHovering && imgObj == null" class="tooltip-main">
+                <p>Select a new image to annotate</p>
+            </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="annot-title">
-            <p class="annotation">Annotations</p>
-        </div>
         <div class=label-list>
-            <div class="row label-cont" *ngFor="let label of imgLabel">
-                <div class="col-md-10">
-                    <p class="label"> {{ label }} </p>
-                </div>
-                <div class="col-md-2">
-                    <i class="material-icons">remove_circle_outline</i>
-                </div>
+            <div class="annot-title">
+                <p *ngIf="imgLabel.length != 0;else elseBlock" class="annotation">Annotations</p>
+                <ng-template #elseBlock><i class="material-icons">border_inner</i></ng-template>
+            </div>
+
+            <div class="label-cont" *ngFor="let label of imgLabel">
+                <i class="material-icons" (click)="clearLabel(label)">remove_circle_outline</i>
+                <p class="label"> {{ label }} </p>
             </div>
             <div class="tip-one">
-                <p class="tooltip-one">Select an area in the image to add an <br>annotation</p>
+                <p class="tooltip-one">Select a region in the image to add an <br>annotation</p>
             </div>
         </div>
         <div class="upload-container">

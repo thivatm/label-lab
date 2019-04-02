@@ -1,12 +1,13 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
     font-size: 23px;  /* Preferred icon size */
     direction: ltr;
-    text-align: center;
-    margin: auto;
-    display: block;
   
     /* Support for all WebKit browsers. */
     -webkit-font-smoothing: antialiased;
@@ -18,16 +19,13 @@
     font-feature-settings: 'liga';
 }
 
-* {
-    font-family: 'Roboto', sans-serif;
-}
-
 .row {
     margin: 0;
 }
 
 .show-case {
     background-color: #F2F3F4;
+    height: 100vh;
 }
 
 .tooltip-main {
@@ -36,17 +34,20 @@
     color: #F2F3F4;
     margin: auto;
     display: block;
+    min-height: 5%;
 }
 
 .tooltip-main p {
     background-color: #ED73EF;
     color: #F2F3F4;
-    margin: 2px 12px;
+    font-weight: 400;
+    margin: 3px 15px;
+    transition: all 0.2s ease-in-out;
 }
 
 .browse-button {
     margin: auto;
-    padding: 12px 0 0 0;
+    padding: 10px 0 0 0;
 }
 
 .browse-button p {
@@ -63,10 +64,6 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     color: rgba(1, 115, 255, 0.5);
-}
-
-.label-list {
-    height: 680px;
 }
 
 .upload-container {
@@ -99,7 +96,7 @@
 .imageViewer {
     margin: 3% 5% 1% 5%;
     display: block;
-    background-color: rgb(11, 8, 26);
+    background-color: rgb(228, 228, 228);
 }
 
 .annotation {
@@ -109,14 +106,25 @@
     margin: 2% 0;
 }
 
+.annot-title i {
+    color: #727274;
+    font-size: 40px;
+    cursor: default;
+    text-align: center;
+    display: block;
+    padding: 10% 0 0 0;
+}
+
 .label-list {
     width: 100%;
+    min-height: 85%;
 }
 
 .label-cont {
     border: 1px solid #F06738;
     border-radius: 5px;
     margin: 2%;
+    padding: 20px;
     padding: 1% 2%;
 }
 
@@ -131,12 +139,20 @@
 }
 
 .label-cont i {
+    float: right;
+    line-height: 1.35;
     color: #F06738;
     font-size: 23px;
+    cursor: pointer;
+}
+
+.label-cont div {
+    display: inline-block;
 }
 
 .tip-one {
     color: #727274;
     font-size: 16px;
+    margin: 5%;
     text-align: center;
 }

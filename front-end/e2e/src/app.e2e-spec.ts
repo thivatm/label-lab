@@ -18,7 +18,7 @@ describe('workspace-project App', () => {
 
   it('should have title of', () => {
     page.navigateTo();
-    expect(page.getTitle()).toEqual('LABEL LAB');
+    expect(page.getTip()).toEqual('Select a region in the image to add an annotation');
   });
 
   it('should have the button', () => {
