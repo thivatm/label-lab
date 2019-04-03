@@ -16,7 +16,7 @@ describe('workspace-project App', () => {
     }));
   });
 
-  it('should have browse Link', () => {
+  it('should have upload Link', () => {
     page.navigateTo();
     expect(page.getBrowseLink().isPresent()).toEqual(true);
   });

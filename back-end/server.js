@@ -47,6 +47,7 @@ router.route('/upload').post((req, res) => {
       if (error) {
         return res.json({error: `${error}`});
       }
+      console.log(util.inspect(req.body, false, null, true));
       return res.json({success: 'Upload Success!'});
     });
 });

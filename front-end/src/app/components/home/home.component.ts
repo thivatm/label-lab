@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LabService } from '../../services/label.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { ModalLabelComponent } from '../modals/modal-label/modal-label.component';
-import { IRect } from '../../models/IRect';
+import { RectangleCoordinates } from '../../models/RectangleCoordinates';
 import { ResizedEvent  } from 'angular-resize-event';
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   imagePath: any;
   imgObj = null;
   imgLabel = [];
-  rectangle: IRect = {};
+  rectangle: RectangleCoordinates = {};
   coordinatesArray = [];
   isDragged = false;
   isHovering = false;
@@ -31,11 +31,13 @@ export class HomeComponent implements OnInit {
     this.canvasBox = this.canvas.nativeElement.getContext('2d');
   }
 
+
   // To make canvas responsive
   resizeCanvas(event: ResizedEvent) {
     this.canvas.nativeElement.width = event.newWidth;
     this.canvas.nativeElement.height = event.newHeight;
   }
+
 
   drawImg(image) {
     const scaleImg = Math.min(this.canvas.nativeElement.width / image.width, this.canvas.nativeElement.height / image.height);
@@ -44,6 +46,7 @@ export class HomeComponent implements OnInit {
     this.canvasBox.clearRect(0, 0, 1000, 1000);
     this.canvasBox.drawImage(image, x, y, image.width * scaleImg, image.height * scaleImg);
   }
+
 
   // #region - Mouse Events
   mouseDown(event) {
@@ -54,6 +57,7 @@ export class HomeComponent implements OnInit {
     this.isDragged = true;
   }
 
+
   mouseUp() {
     this.isDragged = false;
     this.coordinatesArray.push(this.rectangle);
@@ -62,24 +66,28 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   mouseMove(event) {
     this.isHovering = true;
     if (this.isDragged) {
-      // this.canvasBox.clearRect(0, 0, 2000, 2000);
+      this.canvasBox.clearRect(0, 0, 2000, 2000);
       this.drawImg(this.imgObj);
-      this.rectangle.w = ((event.offsetX - event.currentTarget.offsetLeft) - this.rectangle.startX);
-      this.rectangle.h = ((event.offsetY - event.currentTarget.offsetTop) - this.rectangle.startY);
+      this.rectangle.width = ((event.offsetX - event.currentTarget.offsetLeft) - this.rectangle.startX);
+      this.rectangle.height = ((event.offsetY - event.currentTarget.offsetTop) - this.rectangle.startY);
       this.canvasBox.strokeStyle = 'red';
       this.canvasBox.lineWidth = 5;
-      this.canvasBox.strokeRect(this.rectangle.startX, this.rectangle.startY, this.rectangle.w, this.rectangle.h);
+      this.canvasBox.strokeRect(this.rectangle.startX, this.rectangle.startY, this.rectangle.width, this.rectangle.height);
     }
   }
+
 
   mouseLeave() {
     this.isHovering = false;
   }
   // #endregion
 
+
+  // This function will be called when clicking the upload button
   onChange(event) {
     const fileReader = new FileReader();
     this.imgObj = new Image();
@@ -94,6 +102,7 @@ export class HomeComponent implements OnInit {
       };
     };
   }
+
 
   // Uploads image along with the coordinates and labels
   uploadImg() {
@@ -117,6 +126,7 @@ export class HomeComponent implements OnInit {
       );
   }
 
+
   // Clears everything including images and labels
   clearAll() {
     this.canvasBox.clearRect(0, 0, 2000, 2000);
@@ -125,10 +135,12 @@ export class HomeComponent implements OnInit {
     this.imgLabel = [];
   }
 
+
   // Clears the current label
   clearLabel(element) {
     this.imgLabel.splice(this.imgLabel.indexOf(element), 1);
   }
+
 
   // Toast message: Shows the result of actions
   popupToasts(message: string) {
@@ -136,6 +148,7 @@ export class HomeComponent implements OnInit {
       duration: 4000,
     });
   }
+
 
   // label Modal: Prompt to add labels to image
   openDialog(): void {
@@ -151,6 +164,5 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
 
 }

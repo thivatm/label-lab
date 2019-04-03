@@ -9,7 +9,7 @@
                 <p>Click and drag to create an annotation</p>
             </div>
             <div *ngIf="isHovering && imgObj == null" class="tooltip-main">
-                <p>Select a new image to annotate</p>
+                <p>Upload a new image to annotate</p>
             </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
                     (change)="onChange($event)" #imgUpload />
                 <p *ngIf="imgObj != null">Wrong image?&nbsp;</p>
                 <p *ngIf="imgObj == null">Welcome to Label Lab !&nbsp;</p>
-                <a class="browse" (click)="imgUpload.click()">Select a new image</a>
+                <a class="browse" (click)="imgUpload.click()">Upload a new image</a>
                 <span> &nbsp; / &nbsp; </span>
                 <a class="browse" (click)="clearAll()">Clear image</a>
             </div>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="upload-container">
-            <button class="upload" (click)="uploadImg()">Upload Image</button>
+            <button class="upload" (click)="uploadImg()">Save Image</button>
         </div>
     </div>
 </div>
