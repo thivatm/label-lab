@@ -28,6 +28,9 @@
     height: 100vh;
 }
 
+.tooltip-main-cont {
+    min-height: 7%;
+}
 .tooltip-main {
     background-color: #ED73EF;  
     border-radius: 15px;
@@ -96,6 +99,7 @@
 .imageViewer {
     margin: 3% 5% 1% 5%;
     display: block;
+    height: 80%;
     background-color: rgb(228, 228, 228);
 }
 

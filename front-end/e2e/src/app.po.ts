@@ -5,8 +5,8 @@ export class AppPage {
     return browser.get(browser.baseUrl) as Promise<any>;
   }
 
-  getTip() {
-    return element(by.css('app-home tooltip-one')).getText();
+  getBrowseLink() {
+    return element(by.css('app-home .browse'));
   }
 
   getAboutButton() {

@@ -4,7 +4,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { ModalLabelComponent } from '../modals/modal-label/modal-label.component';
 import { IRect } from '../../models/IRect';
 import { ResizedEvent  } from 'angular-resize-event';
- 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,16 +18,13 @@ export class HomeComponent implements OnInit {
 
   image: any;
   imagePath: any;
-
   imgObj = null;
   imgLabel = [];
-
   rectangle: IRect = {};
   coordinatesArray = [];
-  
   isDragged = false;
   isHovering = false;
-  
+
   constructor(private labService: LabService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -37,12 +34,13 @@ export class HomeComponent implements OnInit {
   // To make canvas responsive
   resizeCanvas(event: ResizedEvent) {
     this.canvas.nativeElement.width = event.newWidth;
+    this.canvas.nativeElement.height = event.newHeight;
   }
 
   drawImg(image) {
-    let scaleImg = Math.min(this.canvas.nativeElement.width / image.width, this.canvas.nativeElement.height / image.height);
-    let x = (this.canvas.nativeElement.width / 2) - (image.width / 2) * scaleImg;
-    let y = (this.canvas.nativeElement.height / 2) - (image.height / 2) * scaleImg;
+    const scaleImg = Math.min(this.canvas.nativeElement.width / image.width, this.canvas.nativeElement.height / image.height);
+    const x = (this.canvas.nativeElement.width / 2) - (image.width / 2) * scaleImg;
+    const y = (this.canvas.nativeElement.height / 2) - (image.height / 2) * scaleImg;
     this.canvasBox.clearRect(0, 0, 1000, 1000);
     this.canvasBox.drawImage(image, x, y, image.width * scaleImg, image.height * scaleImg);
   }
@@ -67,7 +65,7 @@ export class HomeComponent implements OnInit {
   mouseMove(event) {
     this.isHovering = true;
     if (this.isDragged) {
-      this.canvasBox.clearRect(0, 0, 2000, 2000);
+      // this.canvasBox.clearRect(0, 0, 2000, 2000);
       this.drawImg(this.imgObj);
       this.rectangle.w = ((event.offsetX - event.currentTarget.offsetLeft) - this.rectangle.startX);
       this.rectangle.h = ((event.offsetY - event.currentTarget.offsetTop) - this.rectangle.startY);
@@ -99,16 +97,16 @@ export class HomeComponent implements OnInit {
 
   // Uploads image along with the coordinates and labels
   uploadImg() {
-    let formData = new FormData();
-    // Sending image file along with the coordinates and labels in the image 
+    const formData = new FormData();
+    // Sending image file along with the coordinates and labels in the image
     formData.append('myImg', this.image, this.image.name);
     formData.append('Coordinates', JSON.stringify(this.coordinatesArray));
     formData.append('ImageLabels', JSON.stringify(this.imgLabel));
 
     return this.labService.uploadImg(formData)
       .subscribe((res) => {
-        if (res['error']) {
-          this.popupToasts(`Error: ${res['error']}`);
+        if (res[`error`]) {
+          this.popupToasts(`Error: ${res[`error`]}`);
         } else {
           this.popupToasts('Successfully uploaded.');
         }
@@ -119,7 +117,7 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  //Clears everything
+  // Clears everything including images and labels
   clearAll() {
     this.canvasBox.clearRect(0, 0, 2000, 2000);
     this.imgObj = null;
@@ -139,7 +137,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // label Modal: Prompt to add labels to image 
+  // label Modal: Prompt to add labels to image
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalLabelComponent, {
       disableClose: false,

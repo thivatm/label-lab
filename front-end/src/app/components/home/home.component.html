@@ -1,8 +1,16 @@
 <div class="row row-cont">
     <div class="col-md-9 show-case">
         <div class="imageViewer" (resized)="resizeCanvas($event)">
-            <canvas #canvasView height="650" (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)"
+            <canvas #canvasView (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)"
                 (mousemove)="mouseMove($event)" (mouseleave)="mouseLeave()"></canvas>
+        </div>
+        <div class="row tooltip-main-cont">
+            <div *ngIf="isHovering && imgObj != null" class="tooltip-main">
+                <p>Click and drag to create an annotation</p>
+            </div>
+            <div *ngIf="isHovering && imgObj == null" class="tooltip-main">
+                <p>Select a new image to annotate</p>
+            </div>
         </div>
         <div class="row">
             <div class="row browse-button">
@@ -15,14 +23,7 @@
                 <a class="browse" (click)="clearAll()">Clear image</a>
             </div>
         </div>
-        <div class="row">
-            <div *ngIf="isHovering && imgObj != null" class="tooltip-main">
-                <p>Click and drag to create an annotation</p>
-            </div>
-            <div *ngIf="isHovering && imgObj == null" class="tooltip-main">
-                <p>Select a new image to annotate</p>
-            </div>
-        </div>
+        
     </div>
     <div class="col-md-3">
         <div class=label-list>

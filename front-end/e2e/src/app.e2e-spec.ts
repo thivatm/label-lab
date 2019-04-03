@@ -16,14 +16,14 @@ describe('workspace-project App', () => {
     }));
   });
 
-  it('should have title of', () => {
+  it('should have browse Link', () => {
     page.navigateTo();
-    expect(page.getTip()).toEqual('Select a region in the image to add an annotation');
+    expect(page.getBrowseLink().isPresent()).toEqual(true);
   });
 
   it('should have the button', () => {
     page.navigateTo();
     expect(page.getAboutButton().isPresent()).toEqual(true);
-  })
+  });
 
 });
