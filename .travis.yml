@@ -10,5 +10,6 @@ before_script:
 
 script:
   - cd front-end
+  - npm install
   - npm run test
   - ng build --prod
