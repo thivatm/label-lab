@@ -4,12 +4,11 @@ node_js:
 
 addons:
   chrome: stable
-
   
 before_script:
   - npm install -g @angular/cli
 
 script:
   - cd front-end
+  - npm install
   - npm run test
-  - ng build --prod
